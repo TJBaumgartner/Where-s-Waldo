@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-// const posts = require('../controllers/posts');
+const character = require('../controllers/character')
 
-// router.get("/", comments.index);
+router.post("/character/create", character.character_create);
 
 module.exports = router;

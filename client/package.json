@@ -1,5 +1,10 @@
 {
   "name": "client2",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5000/"
+    }
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
