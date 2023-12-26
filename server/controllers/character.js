@@ -15,9 +15,15 @@ exports.character_create = asyncHandler(async(req,res,next) => {
 })
 
 exports.character_check = asyncHandler(async(req,res,next) => {
-    const character = await Character.find({name: req.body.name});
-    if(character == null){
+    // console.log(req.body.exactCord)
+    const exactCord = req.body.exactCord
+    const character = await Character.find({name: req.body.character});
+    if(character[0] == null){
         res.sendStatus(401)
     }
-    console.log(character)
+    if(character[0].cordY - .025 < exactCord.y && exactCord.y < character[0].cordY + .025 && character[0].cordX - .01 < exactCord.x && exactCord.x < character[0].cordX + .01){
+        console.log('Found Him')
+    }
+    
+    res.status(200).json({message: "checked"})
 })

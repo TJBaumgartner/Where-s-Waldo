@@ -17,7 +17,16 @@ function App() {
     console.log(coordinates)
   }
   const characterCheck = (character) => {
-    console.log(character)
+    const name = {character, exactCord}
+    fetch('http://localhost:5000/api/character/check', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(name)
+    })
+    .then((response) => {
+        console.log(response)
+        console.log('Character Checked')
+    })
   }
 
   return (
