@@ -13,3 +13,11 @@ exports.character_create = asyncHandler(async(req,res,next) => {
     await character.save()
     res.status(200).json({message: "Character Created"})
 })
+
+exports.character_check = asyncHandler(async(req,res,next) => {
+    const character = await Character.find({name: req.body.name});
+    if(character == null){
+        res.sendStatus(401)
+    }
+    console.log(character)
+})

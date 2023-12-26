@@ -7,7 +7,7 @@ function App() {
   const [coordinates, setCoordinates] = useState({x: 0, y:0})
   const [exactCord, setExactCord] = useState({x: 0, y:0})
 
-  const Log = (e) => {
+  const getCoordinates = (e) => {
     let Xcord = e.pageX;
     let Ycord = e.pageY - e.target.offsetTop;
     setCoordinates({x: Xcord, y: Ycord})
@@ -16,11 +16,13 @@ function App() {
     console.log(exactCord)
     console.log(coordinates)
   }
-
+  const characterCheck = (character) => {
+    console.log(character)
+  }
 
   return (
     <div>
-      <img src={Image} alt="Where's Waldo Image" className="Image" onClick={(e) => Log(e)}/>
+      <img src={Image} alt="Where's Waldo Image" className="Image" onClick={(e) => getCoordinates(e)}/>
       {displayDropdown == true ? 
       <div>
         <ul className='dropdown' style={{ 
@@ -28,9 +30,9 @@ function App() {
             left: `${coordinates.x + 35}px`,
             top: `${coordinates.y - 30}px`,
             }}>
-            <li>first</li>
-            <li>second</li>
-            <li>third</li>
+            <li onClick={() => characterCheck('Patrick')}>Patrick</li>
+            <li onClick={() => characterCheck('Benson')}>Benson</li>
+            <li onClick={() => characterCheck('Snake')}>Snake</li>
         </ul>
       </div>
         :
